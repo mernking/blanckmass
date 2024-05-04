@@ -3,14 +3,14 @@ import Axios from 'axios';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [data, setData] = useState([]);
+  const [title, setTitle] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Axios.get('http://localhost:3000/api/data');
-        console.log(response.data);
-        setData(response.data);
+        const response = await Axios.get('https://jsonplaceholder.typicode.com/todos/1');
+        console.log(response);
+        setTitle(response.title);
       } catch (error) {
         console.error(error);
       }
@@ -21,9 +21,10 @@ export default function Home() {
 
   return (
     <div>
-      {data.map((item, index) => (
+      {title.map((item, index) => (
         <p key={index}>{item}</p>
       ))}
+      <h1>hello king next body whats up</h1>
     </div>
   );
 }
